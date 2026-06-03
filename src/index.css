@@ -62,14 +62,18 @@ main {
   text-align: center;
 }
 
+.roll-dice:hover {
+  background-color: #725cff;
+}
+
 .dice {
   background-color: #fff;
   border-radius: 3.813px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   font-size: 20.589px;
-  padding: 0.8rem;
+
   width: 2.5rem;
-  height: 2.5 rem;
+  height: 2.5rem;
 }
 
 .dice-container {
