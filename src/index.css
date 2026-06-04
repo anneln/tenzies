@@ -71,7 +71,6 @@ main {
   border-radius: 3.813px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
   font-size: 20.589px;
-
   width: 2.5rem;
   height: 2.5rem;
 }
@@ -85,7 +84,9 @@ main {
 
 .roll-dice {
   border-radius: 3.813px;
-  width: 92.16px;
+  white-space: nowrap;
+  width: auto;
+  padding: 6px 21px;
   height: 35.84px;
   box-shadow: 0 3.2px 7.68px 0 rgba(0, 0, 0, 0.18);
   justify-content: center;
