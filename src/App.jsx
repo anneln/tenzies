@@ -7,9 +7,23 @@ import "./index.css";
 
 export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
   const gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => die.value === dice[0].value);
+
+  const timer = (s) => {
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s - h * 3600) / 60);
+    const sec = s - h * 3600 - m * 60;
+    const hh = String(h).padStart(2, "0");
+    const mm = String(m).padStart(2, "0");
+    const ss = String(sec).padStart(2, "0");
+
+    return `${hh}:${mm}:${ss}`;
+  };
 
   const btnFocus = useRef(null);
   useEffect(() => {
@@ -17,6 +31,12 @@ export default function App() {
       btnFocus.current.focus();
     }
   }, [gameWon]);
+
+  useEffect(() => {
+    if (!isRunning || gameWon) return;
+    const interval = setInterval(() => setTime((t) => t + 1), 1000);
+    return () => clearInterval(interval);
+  }, [isRunning, gameWon, setTime]);
 
   function generateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
@@ -28,6 +48,8 @@ export default function App() {
 
   function startNewGame() {
     setDice(generateAllNewDice());
+    setTime(0);
+    setIsRunning(true);
   }
 
   function rollDice() {
@@ -39,6 +61,7 @@ export default function App() {
   }
 
   function hold(id) {
+    if (!isRunning) setIsRunning(true);
     setDice((oldDice) =>
       oldDice.map((die) =>
         die.id === id ? { ...die, isHeld: !die.isHeld } : die,
@@ -68,6 +91,7 @@ export default function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
+      <p>{timer(time)}</p>
       <div className="dice-container">{diceElements}</div>
       <button
         className="roll-dice"
