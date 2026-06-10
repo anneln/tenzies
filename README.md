@@ -20,6 +20,7 @@ The goal of the game is to get all 10 dice to show the same value. Players can c
 - Win detection
 - Confetti animation on victory
 - Start a new game
+- Timer
 
 ## Deployment
 
