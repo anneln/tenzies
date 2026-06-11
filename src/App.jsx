@@ -104,7 +104,7 @@ export default function App() {
         <a
           className="share-link"
           target="_blank"
-          href={`https://wa.me/?text=I won Tenzies in ${timer(time)}! :) Can you beat that? https://dixdicegame.netlify.app/`}
+          href={`https://wa.me/?text=I won Tenzies in ${timer(time)}! Can you beat that? dixdicegame.netlify.app`}
         >
           Share on WhatsApp
         </a>
