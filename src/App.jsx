@@ -49,7 +49,7 @@ export default function App() {
   function startNewGame() {
     setDice(generateAllNewDice());
     setTime(0);
-    setIsRunning(true);
+    setIsRunning(false);
   }
 
   function rollDice() {
