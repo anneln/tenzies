@@ -100,6 +100,18 @@ export default function App() {
       >
         {gameWon ? "New Game" : "Roll"}
       </button>
+      {gameWon && (
+        <a
+          className="share-link"
+          target="_blank"
+          href={`https://wa.me/?text=I won Tenzies in ${timer(time)}! Can you beat that?`}
+        >
+          Share on WhatsApp
+        </a>
+      )}
+      <p className="copyright">
+        &copy; Made by AnneLn {new Date().getFullYear()}
+      </p>
     </main>
   );
 }
