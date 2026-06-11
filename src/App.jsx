@@ -88,8 +88,8 @@ export default function App() {
       </div>
       <h1>Tenzies</h1>
       <p className="description">
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
+        Roll until all dice are the same. <br></br>Click each die to freeze it
+        at its current value between rolls.
       </p>
       <p className="timer">{timer(time)}</p>
       <div className="dice-container">{diceElements}</div>
