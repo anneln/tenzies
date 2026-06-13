@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import { useTranslation } from "react-i18next";
 
 import "./index.css";
 
@@ -9,20 +10,19 @@ export default function App() {
   const [dice, setDice] = useState(generateAllNewDice());
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const { t: l } = useTranslation();
 
   const gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => die.value === dice[0].value);
 
   const timer = (s) => {
-    const h = Math.floor(s / 3600);
-    const m = Math.floor((s - h * 3600) / 60);
-    const sec = s - h * 3600 - m * 60;
-    const hh = String(h).padStart(2, "0");
+    const m = Math.floor(s / 60);
+    const sec = s - m * 60;
     const mm = String(m).padStart(2, "0");
     const ss = String(sec).padStart(2, "0");
 
-    return `${hh}:${mm}:${ss}`;
+    return `${mm}:${ss}`;
   };
 
   const btnFocus = useRef(null);
@@ -86,11 +86,8 @@ export default function App() {
           <p>Congratulations ! Tou won / Press "New Game" to start again</p>
         )}
       </div>
-      <h1>Dix Dice Game</h1>
-      <p className="description">
-        Roll until all dice are the same. <br></br>Click each die to freeze it
-        at its current value between rolls.
-      </p>
+      <h1>{l("title")}</h1>
+      <p className="description">{l("description")}</p>
       <p className="timer">{timer(time)}</p>
       <div className="dice-container">{diceElements}</div>
       <button
@@ -98,15 +95,15 @@ export default function App() {
         ref={btnFocus}
         onClick={!gameWon ? rollDice : startNewGame}
       >
-        {gameWon ? "New Game" : "Roll"}
+        {gameWon ? l("newGame") : l("roll")}
       </button>
       {gameWon && (
         <a
           className="share-link"
           target="_blank"
-          href={`https://wa.me/?text=I won Dix Dice Game in ${timer(time)}! Can you beat that? https://dixdicegame.netlify.app`}
+          href={`https://wa.me/?text=${l("shareMessage", { time: timer(time) })}`}
         >
-          Share on WhatsApp
+          {l("share")}
         </a>
       )}
       <p className="copyright">
