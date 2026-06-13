@@ -86,7 +86,7 @@ export default function App() {
           <p>Congratulations ! Tou won / Press "New Game" to start again</p>
         )}
       </div>
-      <h1>Tenzies</h1>
+      <h1>Dix Dice Game</h1>
       <p className="description">
         Roll until all dice are the same. <br></br>Click each die to freeze it
         at its current value between rolls.
