@@ -26,10 +26,3 @@ The goal of the game is to get all 10 dice to show the same value. Players can c
 ## Deployment
 
 This project is deployed on **Netlify**.
-
-## Installation
-
-```bash
-npm install
-npm run dev
-```
