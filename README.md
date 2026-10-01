@@ -1,7 +1,7 @@
 # Tenzies
 
 A simple dice game built with **React**.
-[start to play Tenzies](https://dixdicegame.netlify.app/)
+[start to play Tenzies](https://dixdicegame.netlify.app/) 🎲
 
 ## About
 
@@ -22,6 +22,7 @@ The goal of the game is to get all 10 dice to show the same value. Players can c
 - Confetti animation on victory
 - Start a new game
 - Timer
+- Share score on whatsApp
 
 ## Deployment
 
